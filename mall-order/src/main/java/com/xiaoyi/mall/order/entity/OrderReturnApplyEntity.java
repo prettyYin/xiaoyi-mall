@@ -100,7 +100,7 @@ public class OrderReturnApplyEntity implements Serializable {
 	/**
 	 * 描述
 	 */
-	private String description述;
+	private String description;
 	/**
 	 * 凭证图片，以逗号隔开
 	 */
