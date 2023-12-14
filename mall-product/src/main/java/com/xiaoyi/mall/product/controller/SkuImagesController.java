@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.product.entity.SkuImagesEntity;
 import com.xiaoyi.mall.product.service.SkuImagesService;
-import com.xiaoyi.common.utils.PageUtils;
-import com.xiaoyi.common.utils.R;
+import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.R;
 
 
 

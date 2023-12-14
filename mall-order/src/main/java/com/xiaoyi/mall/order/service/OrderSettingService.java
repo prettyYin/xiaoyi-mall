@@ -1,7 +1,7 @@
 package com.xiaoyi.mall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xiaoyi.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageUtils;
 import com.xiaoyi.mall.order.entity.OrderSettingEntity;
 
 import java.util.Map;

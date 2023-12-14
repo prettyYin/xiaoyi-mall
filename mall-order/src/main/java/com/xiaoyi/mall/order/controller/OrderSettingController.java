@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.order.entity.OrderSettingEntity;
 import com.xiaoyi.mall.order.service.OrderSettingService;
-import com.xiaoyi.common.utils.PageUtils;
-import com.xiaoyi.common.utils.R;
+import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.R;
 
 
 
