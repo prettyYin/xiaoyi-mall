@@ -1,8 +1,9 @@
-
+server:
+  port: 8001
 # mysql
 spring:
   datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
+    #    type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.56.13:3306/mall-ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
@@ -18,5 +19,3 @@ spring:
 # mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
-server:
-  port: 8001

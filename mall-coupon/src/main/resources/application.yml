@@ -1,4 +1,5 @@
-
+server:
+  port: 7001
 # mysql
 spring:
   datasource:
@@ -18,5 +19,4 @@ spring:
 # mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
-server:
-  port: 7001
+

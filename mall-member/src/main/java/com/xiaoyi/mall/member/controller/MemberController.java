@@ -3,18 +3,14 @@ package com.xiaoyi.mall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.xiaoyi.mall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.member.entity.MemberEntity;
 import com.xiaoyi.mall.member.service.MemberService;
 import com.xiaoyi.mall.common.utils.PageUtils;
 import com.xiaoyi.mall.common.utils.R;
-
 
 
 /**
@@ -29,6 +25,14 @@ import com.xiaoyi.mall.common.utils.R;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    // 测试feign
+    @GetMapping("/memberCoupon")
+    public R memberCoupon() {
+        return couponFeignService.getById(1L);
+    }
 
     /**
      * 列表
