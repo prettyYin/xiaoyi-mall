@@ -1,20 +1,26 @@
 package com.xiaoyi.mall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 商品三级分类
- * 
+ *
  * @author chandler
  * @email 2544212327@qq.com
  * @date 2023-12-11 22:30:29
  */
 @Data
+@Accessors(chain = true)
 @TableName("pms_category")
 public class CategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -57,4 +63,9 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
+	/**
+	 * 子菜单
+	 */
+	@TableField(exist = false)
+	private List<CategoryEntity> children;
 }

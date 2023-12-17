@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @MapperScan("com.xiaoyi.mall.product.dao")
 @SpringBootApplication
-public class MallProductionApplication {
+public class MallProductApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MallProductionApplication.class,args);
+		SpringApplication.run(MallProductApplication.class,args);
 	}
 }
