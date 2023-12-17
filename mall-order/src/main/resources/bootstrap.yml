@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    nacos:
+#      nacos服务发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+#      nacos配置中心
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: ec43b13f-7db9-4ad1-a006-d3113f8856b1
+        group: dev
+        ext-config:
+          - data-id: datasource-dev.yaml
+            group: dev
+            refresh: true
+          - data-id: mybatis-dev.yaml
+            group: dev
+            refresh: true
+        file-extension: yaml
+  application:
+    name: mall-order
+  profiles:
+    active: dev
