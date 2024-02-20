@@ -9,14 +9,26 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.xiaoyi.mall</groupId>
     <artifactId>mall-gateway</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>mall-product</name>
+    <description>网关服务</description>
 
+<!--    <properties>-->
+<!--        <maven.compiler.source>8</maven.compiler.source>-->
+<!--        <maven.compiler.target>8</maven.compiler.target>-->
+
+<!--        <spring-cloud.version>2020.0.3</spring-cloud.version>-->
+<!--&lt;!&ndash;        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>&ndash;&gt;-->
+<!--        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>-->
+<!--        <mybatis-plus-version>3.4.3</mybatis-plus-version>-->
+<!--    </properties>-->
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-
         <spring-cloud.version>2021.0.8</spring-cloud.version>
-<!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
+        <!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
         <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus-version>3.4.3</mybatis-plus-version>
     </properties>
@@ -27,6 +39,10 @@
             <artifactId>mall-common</artifactId>
             <version>1.0-SNAPSHOT</version>
             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-webmvc</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-web</artifactId>
@@ -39,12 +55,17 @@
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus-generator</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
+        <!--springcloud 2020后的版本默认移除了Netflix依赖,其中包括ribbon依赖：需手动添加-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-loadbalancer</artifactId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
 
         <dependency>
@@ -62,6 +83,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
