@@ -4,11 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.ProductAttrValueEntity;
 import com.xiaoyi.mall.product.service.ProductAttrValueService;
@@ -33,7 +29,7 @@ public class ProductAttrValueController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     //@RequiresPermissions("product:productattrvalue:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = productAttrValueService.queryPage(params);
@@ -45,7 +41,7 @@ public class ProductAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     //@RequiresPermissions("product:productattrvalue:info")
     public R info(@PathVariable("id") Long id){
 		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
@@ -56,7 +52,7 @@ public class ProductAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     //@RequiresPermissions("product:productattrvalue:save")
     public R save(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.save(productAttrValue);
@@ -67,7 +63,7 @@ public class ProductAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     //@RequiresPermissions("product:productattrvalue:update")
     public R update(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
@@ -78,7 +74,7 @@ public class ProductAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete")
     //@RequiresPermissions("product:productattrvalue:delete")
     public R delete(@RequestBody Long[] ids){
 		productAttrValueService.removeByIds(Arrays.asList(ids));
