@@ -126,6 +126,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--aliyun oss-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alicloud-oss</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
             <!--spring boot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

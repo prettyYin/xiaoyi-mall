@@ -17,6 +17,11 @@ spring:
             group: dev
             refresh: true
         file-extension: yaml
+    alicloud:
+      access-key: '请通过nacos覆盖此配置'
+      secret-key: '请通过nacos覆盖此配置'
+      oss:
+        endpoint: '请通过nacos覆盖此配置'
   application:
     name: mall-product
   profiles:
