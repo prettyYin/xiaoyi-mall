@@ -82,4 +82,12 @@ public class BrandController {
         return R.ok();
     }
 
+    @PostMapping("/update/status")
+    public R updateStatus(@RequestBody BrandEntity brand) {
+        brandService.lambdaUpdate()
+                .set(BrandEntity::getShowStatus, brand.getShowStatus())
+                .eq(BrandEntity::getBrandId, brand.getBrandId())
+                .update();
+        return R.ok();
+    }
 }
