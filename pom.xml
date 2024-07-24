@@ -18,12 +18,17 @@
         <module>renren-fast</module>
         <module>mall-common</module>
         <module>mall-gateway</module>
+        <module>mall-third-party</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-boot.version>2.6.6</spring-boot.version>
+        <spring-cloud.version>2021.0.8</spring-cloud.version>
+        <!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-nacos.version>2.1.0.RELEASE</spring-cloud-nacos.version>
     </properties>
 
 </project>

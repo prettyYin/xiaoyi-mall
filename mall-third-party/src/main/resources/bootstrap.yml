@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    nacos:
+      #      nacos服务发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+      #      nacos配置中心
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 3265966a-1158-4a30-8b2e-17e7b24c03cd
+        group: dev
+        file-extension: yaml
+        ext-config:
+          - data-id: mall-third-party.yaml
+            group: dev
+            refresh: true
+  application:
+    name: mall-third-party
+  profiles:
+    active: dev
+#MINIO
+oss:
+  name: '请通过nacos覆盖此配置'
+  # minio地址
+  endpoint: '请通过nacos覆盖此配置'
+  # 账户
+  accessKey: '请通过nacos覆盖此配置'
+  # 密码
+  secretKey: '请通过nacos覆盖此配置'
+  bucketName: '请通过nacos覆盖此配置'
+  fileExt: '请通过nacos覆盖此配置'

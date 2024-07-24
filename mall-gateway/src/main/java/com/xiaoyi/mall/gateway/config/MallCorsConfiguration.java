@@ -1,4 +1,4 @@
-package com.xiaoyi.mall.gateway;
+package com.xiaoyi.mall.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

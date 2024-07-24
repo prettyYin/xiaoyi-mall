@@ -3,27 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.6</version>
+        <artifactId>xiaoyi-mall</artifactId>
+        <groupId>com.xiaoyi.mall</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xiaoyi.mall</groupId>
-    <artifactId>mall-product</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>mall-product</name>
-    <description>商品服务</description>
+    <artifactId>mall-third-party</artifactId>
+    <description>第三方聚合服务</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring-cloud.version>2021.0.8</spring-cloud.version>
-        <!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
-        <mybatis-plus-version>3.4.3</mybatis-plus-version>
+        <minio.version>8.2.2</minio.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -32,27 +26,33 @@
             <version>1.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
+                    <artifactId>mybatis-plus-boot-starter</artifactId>
+                    <groupId>com.baomidou</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>mybatis-plus-extension</artifactId>
+                    <groupId>com.baomidou</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <groupId>mysql</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>validation-api</artifactId>
+                    <groupId>javax.validation</groupId>
+                </exclusion>
+                <exclusion>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
 
-        <!--spring-boot-test-->
+        <!-- MinIO -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-core</artifactId>
-            <version>${mybatis-plus-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
-            <version>${mybatis-plus-version}</version>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
         </dependency>
 
         <!--openfeign-->
@@ -83,6 +83,7 @@
         </dependencies>
     </dependencyManagement>
 
+
     <build>
         <plugins>
             <plugin>
@@ -91,5 +92,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
