@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @author xiaoyi
  */
 @Configuration
-@EnableConfigurationProperties(MinioProperties.class)
-@ConditionalOnProperty(value = "oss.name", havingValue = "minio")
+@ConditionalOnProperty(value = "oss.minio.name", havingValue = "minio")
 public class MinioConfiguration {
  
     private final MinioProperties ossProperties;

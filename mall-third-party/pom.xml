@@ -60,6 +60,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
+        <!--aliyun oss-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alicloud-oss</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
