@@ -44,8 +44,7 @@ public class AttrGroupController {
     @GetMapping("/info/{attrGroupId}")
     //@RequiresPermissions("product:attrgroup:info")
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
-		AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
-
+		AttrGroupEntity attrGroup = attrGroupService.selectById(attrGroupId);
         return R.ok().put("attrGroup", attrGroup);
     }
 
@@ -56,7 +55,6 @@ public class AttrGroupController {
     //@RequiresPermissions("product:attrgroup:save")
     public R save(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.save(attrGroup);
-
         return R.ok();
     }
 
@@ -67,7 +65,6 @@ public class AttrGroupController {
     //@RequiresPermissions("product:attrgroup:update")
     public R update(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.updateById(attrGroup);
-
         return R.ok();
     }
 
@@ -78,7 +75,6 @@ public class AttrGroupController {
     //@RequiresPermissions("product:attrgroup:delete")
     public R delete(@RequestBody Long[] attrGroupIds){
 		attrGroupService.removeByIds(Arrays.asList(attrGroupIds));
-
         return R.ok();
     }
 

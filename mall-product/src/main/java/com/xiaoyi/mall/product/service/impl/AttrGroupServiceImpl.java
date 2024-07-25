@@ -1,8 +1,16 @@
 package com.xiaoyi.mall.product.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.collection.ListUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.xiaoyi.mall.product.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -16,7 +24,10 @@ import com.xiaoyi.mall.product.service.AttrGroupService;
 
 
 @Service("attrGroupService")
+@RequiredArgsConstructor
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEntity> implements AttrGroupService {
+
+    private final CategoryService categoryService;
 
     @Override
     public PageInfo queryPage(Map<String, Object> params) {
@@ -48,6 +59,24 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         );
 
         return new PageInfo(page);
+    }
+
+    @Override
+    public AttrGroupEntity selectById(Long attrGroupId) {
+        AttrGroupEntity attrGroup = getById(attrGroupId);
+        List<Long> catelogPath = new ArrayList<>();
+        if (ObjectUtil.isNull(attrGroup) && ObjectUtil.isNull(attrGroup.getCatelogId())) {
+            return null;
+        }
+        // 根据当前的分类id查询出完整的父级分类id列表
+        Long catelogId = attrGroup.getCatelogId();
+        while (ObjectUtil.isNotNull(catelogId) && catelogId.compareTo(0L) != 0) { // =0 代表为根级分类
+            catelogPath.add(catelogId);
+            catelogId = categoryService.getById(catelogId).getParentCid();
+        }
+        ListUtil.reverse(catelogPath);
+        attrGroup.setCatelogPath(catelogPath);
+        return attrGroup;
     }
 
 }
