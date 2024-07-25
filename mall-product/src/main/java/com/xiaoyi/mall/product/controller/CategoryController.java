@@ -34,7 +34,7 @@ public class CategoryController {
     //@RequiresPermissions("product:category:list")
     public R list(){
         List<CategoryEntity> listTree = categoryService.listTree();
-        return R.ok().put("listTree", listTree);
+        return R.ok(listTree);
     }
 
 
@@ -46,7 +46,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok(category);
     }
 
     /**
