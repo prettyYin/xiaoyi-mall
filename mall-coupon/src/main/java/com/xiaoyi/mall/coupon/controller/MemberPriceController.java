@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.MemberPriceEntity;
 import com.xiaoyi.mall.coupon.service.MemberPriceService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class MemberPriceController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:memberprice:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberPriceService.queryPage(params);
+        PageInfo page = memberPriceService.queryPage(params);
 
         return R.ok().put("page", page);
     }

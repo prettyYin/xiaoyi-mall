@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.SkuLadderEntity;
 import com.xiaoyi.mall.coupon.service.SkuLadderService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class SkuLadderController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:skuladder:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuLadderService.queryPage(params);
+        PageInfo page = skuLadderService.queryPage(params);
 
         return R.ok().put("page", page);
     }

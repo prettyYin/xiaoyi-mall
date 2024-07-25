@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.BrandEntity;
 import com.xiaoyi.mall.product.service.BrandService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
-
-import javax.validation.Valid;
 
 
 /**
@@ -37,7 +35,7 @@ public class BrandController {
     @GetMapping("/list")
     //@RequiresPermissions("product:brand:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = brandService.queryPage(params);
+        PageInfo page = brandService.queryPage(params);
 
         return R.ok().put("page", page);
     }

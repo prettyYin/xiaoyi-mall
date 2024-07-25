@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.member.entity.MemberEntity;
 import com.xiaoyi.mall.member.service.MemberService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -40,7 +40,7 @@ public class MemberController {
     @RequestMapping("/list")
     //@RequiresPermissions("member:member:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberService.queryPage(params);
+        PageInfo page = memberService.queryPage(params);
 
         return R.ok().put("page", page);
     }

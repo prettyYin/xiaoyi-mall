@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.SeckillPromotionEntity;
 import com.xiaoyi.mall.coupon.service.SeckillPromotionService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class SeckillPromotionController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:seckillpromotion:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = seckillPromotionService.queryPage(params);
+        PageInfo page = seckillPromotionService.queryPage(params);
 
         return R.ok().put("page", page);
     }

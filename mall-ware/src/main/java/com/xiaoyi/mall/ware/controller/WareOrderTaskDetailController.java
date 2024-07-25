@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.ware.entity.WareOrderTaskDetailEntity;
 import com.xiaoyi.mall.ware.service.WareOrderTaskDetailService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class WareOrderTaskDetailController {
     @RequestMapping("/list")
     //@RequiresPermissions("ware:wareordertaskdetail:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = wareOrderTaskDetailService.queryPage(params);
+        PageInfo page = wareOrderTaskDetailService.queryPage(params);
 
         return R.ok().put("page", page);
     }

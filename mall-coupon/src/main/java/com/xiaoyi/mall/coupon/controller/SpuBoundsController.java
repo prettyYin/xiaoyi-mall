@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.SpuBoundsEntity;
 import com.xiaoyi.mall.coupon.service.SpuBoundsService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class SpuBoundsController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:spubounds:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuBoundsService.queryPage(params);
+        PageInfo page = spuBoundsService.queryPage(params);
 
         return R.ok().put("page", page);
     }

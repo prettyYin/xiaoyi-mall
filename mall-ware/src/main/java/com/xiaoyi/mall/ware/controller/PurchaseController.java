@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.ware.entity.PurchaseEntity;
 import com.xiaoyi.mall.ware.service.PurchaseService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class PurchaseController {
     @RequestMapping("/list")
     //@RequiresPermissions("ware:purchase:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = purchaseService.queryPage(params);
+        PageInfo page = purchaseService.queryPage(params);
 
         return R.ok().put("page", page);
     }

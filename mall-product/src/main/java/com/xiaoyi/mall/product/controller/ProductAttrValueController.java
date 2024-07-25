@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.ProductAttrValueEntity;
 import com.xiaoyi.mall.product.service.ProductAttrValueService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class ProductAttrValueController {
     @GetMapping("/list")
     //@RequiresPermissions("product:productattrvalue:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = productAttrValueService.queryPage(params);
+        PageInfo page = productAttrValueService.queryPage(params);
 
         return R.ok().put("page", page);
     }

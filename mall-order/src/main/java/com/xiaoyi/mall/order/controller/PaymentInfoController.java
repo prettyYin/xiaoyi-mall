@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.order.entity.PaymentInfoEntity;
 import com.xiaoyi.mall.order.service.PaymentInfoService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class PaymentInfoController {
     @RequestMapping("/list")
     //@RequiresPermissions("order:paymentinfo:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = paymentInfoService.queryPage(params);
+        PageInfo page = paymentInfoService.queryPage(params);
 
         return R.ok().put("page", page);
     }

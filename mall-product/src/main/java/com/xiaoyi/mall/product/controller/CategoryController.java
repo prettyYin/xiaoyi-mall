@@ -2,14 +2,12 @@ package com.xiaoyi.mall.product.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.CategoryEntity;
 import com.xiaoyi.mall.product.service.CategoryService;
-import com.xiaoyi.mall.common.utils.PageUtils;
 import com.xiaoyi.mall.common.utils.R;
 
 

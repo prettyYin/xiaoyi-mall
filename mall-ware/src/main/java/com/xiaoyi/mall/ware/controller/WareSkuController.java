@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.ware.entity.WareSkuEntity;
 import com.xiaoyi.mall.ware.service.WareSkuService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class WareSkuController {
     @RequestMapping("/list")
     //@RequiresPermissions("ware:waresku:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = wareSkuService.queryPage(params);
+        PageInfo page = wareSkuService.queryPage(params);
 
         return R.ok().put("page", page);
     }

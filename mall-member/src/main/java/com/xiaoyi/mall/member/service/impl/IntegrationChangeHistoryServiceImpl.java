@@ -5,7 +5,7 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.Query;
 
 import com.xiaoyi.mall.member.dao.IntegrationChangeHistoryDao;
@@ -17,13 +17,13 @@ import com.xiaoyi.mall.member.service.IntegrationChangeHistoryService;
 public class IntegrationChangeHistoryServiceImpl extends ServiceImpl<IntegrationChangeHistoryDao, IntegrationChangeHistoryEntity> implements IntegrationChangeHistoryService {
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageInfo queryPage(Map<String, Object> params) {
         IPage<IntegrationChangeHistoryEntity> page = this.page(
                 new Query<IntegrationChangeHistoryEntity>().getPage(params),
                 new QueryWrapper<IntegrationChangeHistoryEntity>()
         );
 
-        return new PageUtils(page);
+        return new PageInfo(page);
     }
 
 }

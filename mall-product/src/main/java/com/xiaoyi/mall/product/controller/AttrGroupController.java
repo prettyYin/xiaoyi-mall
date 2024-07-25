@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.AttrGroupEntity;
 import com.xiaoyi.mall.product.service.AttrGroupService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class AttrGroupController {
     @GetMapping("/list")
     //@RequiresPermissions("product:attrgroup:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrGroupService.queryPage(params);
+        PageInfo page = attrGroupService.queryPage(params);
 
         return R.ok().put("page", page);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.order.entity.OrderReturnApplyEntity;
 import com.xiaoyi.mall.order.service.OrderReturnApplyService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class OrderReturnApplyController {
     @RequestMapping("/list")
     //@RequiresPermissions("order:orderreturnapply:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = orderReturnApplyService.queryPage(params);
+        PageInfo page = orderReturnApplyService.queryPage(params);
 
         return R.ok().put("page", page);
     }

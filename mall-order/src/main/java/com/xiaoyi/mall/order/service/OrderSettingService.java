@@ -1,7 +1,7 @@
 package com.xiaoyi.mall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.order.entity.OrderSettingEntity;
 
 import java.util.Map;
@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface OrderSettingService extends IService<OrderSettingEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageInfo queryPage(Map<String, Object> params);
 }
 

@@ -1,7 +1,7 @@
 package com.xiaoyi.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.ware.entity.WareOrderTaskDetailEntity;
 
 import java.util.Map;
@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface WareOrderTaskDetailService extends IService<WareOrderTaskDetailEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageInfo queryPage(Map<String, Object> params);
 }
 

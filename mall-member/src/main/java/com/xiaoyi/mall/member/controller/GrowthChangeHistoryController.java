@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.member.entity.GrowthChangeHistoryEntity;
 import com.xiaoyi.mall.member.service.GrowthChangeHistoryService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class GrowthChangeHistoryController {
     @RequestMapping("/list")
     //@RequiresPermissions("member:growthchangehistory:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = growthChangeHistoryService.queryPage(params);
+        PageInfo page = growthChangeHistoryService.queryPage(params);
 
         return R.ok().put("page", page);
     }

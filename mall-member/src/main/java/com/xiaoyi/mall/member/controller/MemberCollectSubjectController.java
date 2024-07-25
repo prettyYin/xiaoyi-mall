@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.member.entity.MemberCollectSubjectEntity;
 import com.xiaoyi.mall.member.service.MemberCollectSubjectService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class MemberCollectSubjectController {
     @RequestMapping("/list")
     //@RequiresPermissions("member:membercollectsubject:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberCollectSubjectService.queryPage(params);
+        PageInfo page = memberCollectSubjectService.queryPage(params);
 
         return R.ok().put("page", page);
     }

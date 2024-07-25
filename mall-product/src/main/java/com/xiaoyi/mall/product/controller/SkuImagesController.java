@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.SkuImagesEntity;
 import com.xiaoyi.mall.product.service.SkuImagesService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class SkuImagesController {
     @GetMapping("/list")
     //@RequiresPermissions("product:skuimages:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuImagesService.queryPage(params);
+        PageInfo page = skuImagesService.queryPage(params);
 
         return R.ok().put("page", page);
     }

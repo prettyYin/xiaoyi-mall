@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.HomeSubjectEntity;
 import com.xiaoyi.mall.coupon.service.HomeSubjectService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class HomeSubjectController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:homesubject:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = homeSubjectService.queryPage(params);
+        PageInfo page = homeSubjectService.queryPage(params);
 
         return R.ok().put("page", page);
     }

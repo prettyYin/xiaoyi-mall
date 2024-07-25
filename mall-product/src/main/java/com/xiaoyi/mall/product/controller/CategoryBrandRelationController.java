@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.CategoryBrandRelationEntity;
 import com.xiaoyi.mall.product.service.CategoryBrandRelationService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class CategoryBrandRelationController {
     @GetMapping("/list")
     //@RequiresPermissions("product:categorybrandrelation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryBrandRelationService.queryPage(params);
+        PageInfo page = categoryBrandRelationService.queryPage(params);
 
         return R.ok().put("page", page);
     }

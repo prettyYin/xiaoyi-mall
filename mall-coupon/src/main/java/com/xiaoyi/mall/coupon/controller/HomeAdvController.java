@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.coupon.entity.HomeAdvEntity;
 import com.xiaoyi.mall.coupon.service.HomeAdvService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -45,7 +45,7 @@ public class HomeAdvController {
      */
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = homeAdvService.queryPage(params);
+        PageInfo page = homeAdvService.queryPage(params);
 
         return R.ok().put("page", page);
     }

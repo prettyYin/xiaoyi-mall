@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.CommentReplayEntity;
 import com.xiaoyi.mall.product.service.CommentReplayService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class CommentReplayController {
     @GetMapping("/list")
     //@RequiresPermissions("product:commentreplay:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = commentReplayService.queryPage(params);
+        PageInfo page = commentReplayService.queryPage(params);
 
         return R.ok().put("page", page);
     }

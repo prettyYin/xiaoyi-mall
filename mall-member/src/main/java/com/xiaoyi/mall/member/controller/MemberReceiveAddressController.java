@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.member.entity.MemberReceiveAddressEntity;
 import com.xiaoyi.mall.member.service.MemberReceiveAddressService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class MemberReceiveAddressController {
     @RequestMapping("/list")
     //@RequiresPermissions("member:memberreceiveaddress:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberReceiveAddressService.queryPage(params);
+        PageInfo page = memberReceiveAddressService.queryPage(params);
 
         return R.ok().put("page", page);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaoyi.mall.coupon.entity.SeckillSessionEntity;
 import com.xiaoyi.mall.coupon.service.SeckillSessionService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -36,7 +36,7 @@ public class SeckillSessionController {
     @RequestMapping("/list")
     //@RequiresPermissions("coupon:seckillsession:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = seckillSessionService.queryPage(params);
+        PageInfo page = seckillSessionService.queryPage(params);
 
         return R.ok().put("page", page);
     }

@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Mark sunlightcs@gmail.com
  */
-public class PageUtils implements Serializable {
+public class PageInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 总记录数
@@ -48,7 +48,7 @@ public class PageUtils implements Serializable {
 	 * @param pageSize    每页记录数
 	 * @param currPage    当前页数
 	 */
-	public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
+	public PageInfo(List<?> list, int totalCount, int pageSize, int currPage) {
 		this.list = list;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
@@ -59,7 +59,7 @@ public class PageUtils implements Serializable {
 	/**
 	 * 分页
 	 */
-	public PageUtils(IPage<?> page) {
+	public PageInfo(IPage<?> page) {
 		this.list = page.getRecords();
 		this.totalCount = (int)page.getTotal();
 		this.pageSize = (int)page.getSize();

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.SpuImagesEntity;
 import com.xiaoyi.mall.product.service.SpuImagesService;
-import com.xiaoyi.mall.common.utils.PageUtils;
+import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.common.utils.R;
 
 
@@ -32,7 +32,7 @@ public class SpuImagesController {
     @GetMapping("/list")
     //@RequiresPermissions("product:spuimages:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuImagesService.queryPage(params);
+        PageInfo page = spuImagesService.queryPage(params);
 
         return R.ok().put("page", page);
     }
