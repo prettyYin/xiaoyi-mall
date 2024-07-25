@@ -29,11 +29,11 @@ public class AttrGroupController {
     /**
      * 列表
      */
-    @GetMapping("/list")
+    @GetMapping("/list/{categoryId}")
     //@RequiresPermissions("product:attrgroup:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageInfo page = attrGroupService.queryPage(params);
-
+    public R list(@RequestParam Map<String, Object> params,
+                  @PathVariable("categoryId")String categoryId){
+        PageInfo page = attrGroupService.queryBaseAttrPage(params,categoryId);
         return R.ok().put("page", page);
     }
 
