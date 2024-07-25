@@ -30,7 +30,7 @@ public class CategoryController {
     /**
      * 查询分类树状列表
      */
-    @GetMapping("/listTree")
+    @GetMapping("/list/tree")
     //@RequiresPermissions("product:category:list")
     public R list(){
         List<CategoryEntity> listTree = categoryService.listTree();
