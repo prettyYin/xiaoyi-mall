@@ -1,4 +1,4 @@
-package com.xiaoyi.mall.common.exception;
+package com.xiaoyi.mall.common.enums;
 
 /***
  * 错误码和错误信息定义类
@@ -16,8 +16,20 @@ package com.xiaoyi.mall.common.exception;
  *
  */
 public enum BizCodeEnum {
+    SQL_SYNTAX_EXCEPTION(500, "SQL语法错误"),
+    UNAUTHORIZED_EXCEPTION(401, "未授权"),
+    FORBIDDEN_EXCEPTION(403, "禁止访问"),
+    NOT_FOUND_EXCEPTION(404, "未找到资源"),
+    METHOD_NOT_ALLOWED_EXCEPTION(405, "请求方法不允许"),
+    REQUEST_TIMEOUT_EXCEPTION(408, "请求超时"),
+    CONFLICT_EXCEPTION(409, "请求冲突"),
+    GONE_EXCEPTION(410, "请求资源已过期"),
+    UNSUPPORTED_MEDIA_TYPE_EXCEPTION(415, "不支持的媒体类型"),
+    TOO_MANY_REQUESTS_EXCEPTION(429, "请求过多"),
+    HTTP_SERVER_EXCEPTION(503, "HTTP请求错误"),
+
     UNKNOW_EXCEPTION(10000,"系统未知异常"),
-    VAILD_EXCEPTION(10001,"参数格式校验失败");
+    VAILD_EXCEPTION(10001, "参数格式校验失败");
 
     private int code;
     private String msg;

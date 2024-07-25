@@ -3,7 +3,11 @@ package com.xiaoyi.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.xiaoyi.mall.common.valid.AddGroup;
+import com.xiaoyi.mall.common.valid.UpdateGroup;
+import com.xiaoyi.mall.common.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.BrandEntity;
@@ -11,6 +15,7 @@ import com.xiaoyi.mall.product.service.BrandService;
 import com.xiaoyi.mall.common.utils.PageUtils;
 import com.xiaoyi.mall.common.utils.R;
 
+import javax.validation.Valid;
 
 
 /**
@@ -54,7 +59,7 @@ public class BrandController {
      */
     @PostMapping("/save")
     //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
+    public R save(@RequestBody @Validated(AddGroup.class) BrandEntity brand){
 		brandService.save(brand);
 
         return R.ok();
@@ -65,7 +70,7 @@ public class BrandController {
      */
     @PostMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@RequestBody @Validated(UpdateGroup.class) BrandEntity brand){
 		brandService.updateById(brand);
 
         return R.ok();
@@ -83,7 +88,7 @@ public class BrandController {
     }
 
     @PostMapping("/update/status")
-    public R updateStatus(@RequestBody BrandEntity brand) {
+    public R updateStatus(@RequestBody @Validated(UpdateStatusGroup.class) BrandEntity brand) {
         brandService.lambdaUpdate()
                 .set(BrandEntity::getShowStatus, brand.getShowStatus())
                 .eq(BrandEntity::getBrandId, brand.getBrandId())
