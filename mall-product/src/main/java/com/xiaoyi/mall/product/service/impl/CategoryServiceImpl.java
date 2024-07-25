@@ -1,6 +1,9 @@
 package com.xiaoyi.mall.product.service.impl;
 
 import com.xiaoyi.mall.product.constanst.CategoryConstants;
+import com.xiaoyi.mall.product.entity.CategoryBrandRelationEntity;
+import com.xiaoyi.mall.product.service.CategoryBrandRelationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -17,10 +20,14 @@ import com.xiaoyi.mall.common.utils.Query;
 import com.xiaoyi.mall.product.dao.CategoryDao;
 import com.xiaoyi.mall.product.entity.CategoryEntity;
 import com.xiaoyi.mall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("categoryService")
+@RequiredArgsConstructor
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    private final CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageInfo queryPage(Map<String, Object> params) {
@@ -44,6 +51,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                 .sorted(Comparator.comparing(CategoryEntity::getSort,Comparator.nullsLast(Comparator.naturalOrder())))
                 .collect(Collectors.toList());
         return result;
+    }
+
+    @Transactional
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        updateById(category);
+        categoryBrandRelationService
+                .lambdaUpdate()
+                .eq(CategoryBrandRelationEntity::getCatelogId, category.getCatId())
+                .set(CategoryBrandRelationEntity::getCatelogName, category.getName())
+                .update();
     }
 
     /**

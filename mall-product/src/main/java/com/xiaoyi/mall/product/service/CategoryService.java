@@ -19,5 +19,11 @@ public interface CategoryService extends IService<CategoryEntity> {
     PageInfo queryPage(Map<String, Object> params);
 
 	List<CategoryEntity> listTree();
+
+	/*
+     * 级联修改 即多表关联修改
+     * @param category 分类对象
+	 */
+    void updateCascade(CategoryEntity category);
 }
 

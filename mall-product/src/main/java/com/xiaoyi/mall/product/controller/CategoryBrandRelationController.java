@@ -3,7 +3,10 @@ package com.xiaoyi.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.xiaoyi.mall.common.valid.AddGroup;
+import com.xiaoyi.mall.common.valid.UpdateGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.CategoryBrandRelationEntity;
@@ -29,11 +32,10 @@ public class CategoryBrandRelationController {
     /**
      * 列表
      */
-    @GetMapping("/list")
+    @GetMapping("/catelog/list")
     //@RequiresPermissions("product:categorybrandrelation:list")
     public R list(@RequestParam Map<String, Object> params){
         PageInfo page = categoryBrandRelationService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -54,9 +56,8 @@ public class CategoryBrandRelationController {
      */
     @PostMapping("/save")
     //@RequiresPermissions("product:categorybrandrelation:save")
-    public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
-		categoryBrandRelationService.save(categoryBrandRelation);
-
+    public R save(@RequestBody @Validated({AddGroup.class}) CategoryBrandRelationEntity categoryBrandRelation){
+		categoryBrandRelationService.saveDetail(categoryBrandRelation);
         return R.ok();
     }
 
@@ -67,7 +68,6 @@ public class CategoryBrandRelationController {
     //@RequiresPermissions("product:categorybrandrelation:update")
     public R update(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
 		categoryBrandRelationService.updateById(categoryBrandRelation);
-
         return R.ok();
     }
 

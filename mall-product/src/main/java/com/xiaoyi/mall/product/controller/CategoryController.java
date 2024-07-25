@@ -3,7 +3,9 @@ package com.xiaoyi.mall.product.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.xiaoyi.mall.common.valid.UpdateGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.product.entity.CategoryEntity;
@@ -63,9 +65,8 @@ public class CategoryController {
      */
     @PostMapping("/update")
     //@RequiresPermissions("product:category:update")
-    public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
-
+    public R update(@RequestBody @Validated(UpdateGroup.class) CategoryEntity category){
+		categoryService.updateCascade(category);
         return R.ok();
     }
 

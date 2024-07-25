@@ -10,9 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.xiaoyi.mall.common.valid.UpdateGroup;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 商品三级分类
@@ -30,6 +33,7 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * 分类id
 	 */
+	@NotNull(groups = UpdateGroup.class)
 	@TableId
 	private Long catId;
 	/**
