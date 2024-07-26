@@ -2,8 +2,10 @@ package com.xiaoyi.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
+import com.xiaoyi.mall.product.entity.BrandEntity;
 import com.xiaoyi.mall.product.entity.CategoryBrandRelationEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,5 +25,6 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
      */
     void saveDetail(CategoryBrandRelationEntity categoryBrandRelation);
 
+    List<BrandEntity> getBrandsByCatId(Long catId);
 }
 

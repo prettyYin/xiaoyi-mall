@@ -1,5 +1,7 @@
 package com.xiaoyi.mall.product.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xiaoyi.mall.product.entity.CategoryBrandRelationEntity;
 import com.xiaoyi.mall.product.service.CategoryBrandRelationService;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +27,13 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
 
     @Override
     public PageInfo queryPage(Map<String, Object> params) {
+        LambdaQueryWrapper<BrandEntity> queryWrapper = new LambdaQueryWrapper<>();
+        if (params.containsKey("key") && ObjectUtil.isNotEmpty(params.get("key"))) {
+            queryWrapper.like(BrandEntity::getName, params.get("key")).or().like(BrandEntity::getBrandId, params.get("key"));
+        }
         IPage<BrandEntity> page = this.page(
                 new Query<BrandEntity>().getPage(params),
-                new QueryWrapper<>()
+                queryWrapper
         );
 
         return new PageInfo(page);

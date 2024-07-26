@@ -3,7 +3,9 @@ package com.xiaoyi.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.product.entity.AttrGroupEntity;
+import com.xiaoyi.mall.product.vo.AttrGroupWithAttrsVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,5 +22,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
     PageInfo queryBaseAttrPage(Map<String, Object> params, String categoryId);
 
     AttrGroupEntity selectById(Long attrGroupId);
+
+    List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId);
 }
 

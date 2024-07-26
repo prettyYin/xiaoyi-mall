@@ -1,10 +1,16 @@
 package com.xiaoyi.mall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import com.xiaoyi.mall.common.valid.AddGroup;
 import com.xiaoyi.mall.common.valid.UpdateGroup;
+import com.xiaoyi.mall.product.entity.BrandEntity;
+import com.xiaoyi.mall.product.vo.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +43,23 @@ public class CategoryBrandRelationController {
     public R list(@RequestParam Map<String, Object> params){
         PageInfo page = categoryBrandRelationService.queryPage(params);
         return R.ok().put("page", page);
+    }
+
+    /**
+     *  /product/categorybrandrelation/brands/list
+     *
+     *  1、Controller：处理请求，接受和校验数据
+     *  2、Service接受controller传来的数据，进行业务处理
+     *  3、Controller接受Service处理完的数据，封装页面指定的vo
+     */
+    @GetMapping("/brands/list")
+    public R relationBrandsList(@RequestParam(value = "catId",required = true)Long catId){
+        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
+
+        List<BrandVo> collect = vos.stream().map(item -> new BrandVo().setBrandId(item.getBrandId()).setBrandName(item.getName())).collect(Collectors.toList());
+
+        return R.ok().put("data",collect);
+
     }
 
 

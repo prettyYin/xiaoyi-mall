@@ -6,9 +6,7 @@ import com.xiaoyi.mall.product.service.CategoryBrandRelationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -33,7 +31,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public PageInfo queryPage(Map<String, Object> params) {
         IPage<CategoryEntity> page = this.page(
                 new Query<CategoryEntity>().getPage(params),
-                new QueryWrapper<CategoryEntity>()
+                new QueryWrapper<>()
         );
 
         return new PageInfo(page);
@@ -64,11 +62,30 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                 .update();
     }
 
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> paths = new ArrayList<>();
+        List<Long> parentPath = findParentPath(catelogId, paths);
+
+        Collections.reverse(parentPath);
+
+
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    private List<Long> findParentPath(Long catelogId,List<Long> paths){
+        //1、收集当前节点id
+        paths.add(catelogId);
+        CategoryEntity byId = this.getById(catelogId);
+        if(byId.getParentCid()!=0){
+            findParentPath(byId.getParentCid(),paths);
+        }
+        return paths;
+
+    }
+
     /**
      * 递归查找所有菜单的子菜单
-     * @param rootCategory
-     * @param allCategoryList
-     * @return
      */
     private List<CategoryEntity> getChildren(CategoryEntity rootCategory, List<CategoryEntity> allCategoryList) {
         List<CategoryEntity> children = allCategoryList.stream()
