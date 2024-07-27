@@ -7,15 +7,16 @@ spring:
 #      nacos配置中心
       config:
         server-addr: 127.0.0.1:8848
-        namespace: ec43b13f-7db9-4ad1-a006-d3113f8856b1
+#        namespace: ec43b13f-7db9-4ad1-a006-d3113f8856b1
+        namespace: fe0a0363-6bc9-47fe-8b14-8fb14d8be6fa
         group: dev
-        ext-config:
-          - data-id: datasource-dev.yaml
-            group: dev
-            refresh: true
-          - data-id: mybatis-dev.yaml
-            group: dev
-            refresh: true
+#        ext-config:
+#          - data-id: datasource-dev.yaml
+#            group: dev
+#            refresh: true
+#          - data-id: mybatis-dev.yaml
+#            group: dev
+#            refresh: true
         file-extension: yaml
   application:
     name: mall-order

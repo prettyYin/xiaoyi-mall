@@ -3,6 +3,8 @@ package com.xiaoyi.mall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.xiaoyi.mall.coupon.to.SaveSkuLadderTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,7 +60,8 @@ public class SkuLadderController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("coupon:skuladder:save")
-    public R save(@RequestBody SkuLadderEntity skuLadder){
+    public R save(@RequestBody SaveSkuLadderTo saveTo){
+        SkuLadderEntity skuLadder = BeanUtil.copyProperties(saveTo, SkuLadderEntity.class);
 		skuLadderService.save(skuLadder);
 
         return R.ok();

@@ -4,7 +4,7 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         #        不同的命名空间下会被隔离，网关服务和renren-fast服务放到public下
-        #        namespace: 9077e1fa-3e9c-4fc0-976a-c787585a515a
+        namespace: fe0a0363-6bc9-47fe-8b14-8fb14d8be6fa
         group: dev
         file-extension: yaml
       discovery:
@@ -14,5 +14,5 @@ spring:
           lower-case-service-id: true
   application:
     name: renren-fast
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev

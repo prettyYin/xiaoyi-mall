@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * spu图片
@@ -14,6 +17,8 @@ import lombok.Data;
  * @email 2544212327@qq.com
  * @date 2023-12-11 22:30:29
  */
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @TableName("pms_spu_images")
 public class SpuImagesEntity implements Serializable {
@@ -45,4 +50,8 @@ public class SpuImagesEntity implements Serializable {
 	 */
 	private Integer defaultImg;
 
+	public SpuImagesEntity(Long spuId, String imgUrl) {
+		this.spuId = spuId;
+		this.imgUrl = imgUrl;
+	}
 }

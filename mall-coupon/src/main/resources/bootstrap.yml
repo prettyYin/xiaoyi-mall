@@ -7,18 +7,19 @@ spring:
 #      nacos配置中心
       config:
         server-addr: 127.0.0.1:8848
-        namespace: 7a9e0cfb-c012-441f-8b9c-02e8f3f78136
+#        namespace: 7a9e0cfb-c012-441f-8b9c-02e8f3f78136
+        namespace: fe0a0363-6bc9-47fe-8b14-8fb14d8be6fa
         group: dev
-        ext-config:
-          - data-id: mall-coupon-other.yaml
-            group: dev
-            refresh: true
-          - data-id: datasource-dev.yaml
-            group: dev
-            refresh: true
-          - data-id: mybatis-dev.yaml
-            group: dev
-            refresh: true
+#        ext-config:
+#          - data-id: mall-coupon-other.yaml
+#            group: dev
+#            refresh: true
+#          - data-id: datasource-dev.yaml
+#            group: dev
+#            refresh: true
+#          - data-id: mybatis-dev.yaml
+#            group: dev
+#            refresh: true
         file-extension: yaml
   application:
     name: mall-coupon

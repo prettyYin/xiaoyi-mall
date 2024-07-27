@@ -7,13 +7,14 @@ spring:
       #      nacos配置中心
       config:
         server-addr: 127.0.0.1:8848
-        namespace: 3265966a-1158-4a30-8b2e-17e7b24c03cd
+#        namespace: 3265966a-1158-4a30-8b2e-17e7b24c03cd
+        namespace: fe0a0363-6bc9-47fe-8b14-8fb14d8be6fa
         group: dev
         file-extension: yaml
-        ext-config:
-          - data-id: mall-third-party.yaml
-            group: dev
-            refresh: true
+#        ext-config:
+#          - data-id: mall-third-party.yaml
+#            group: dev
+#            refresh: true
   application:
     name: mall-third-party
   profiles:

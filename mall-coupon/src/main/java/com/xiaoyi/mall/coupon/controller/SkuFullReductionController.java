@@ -3,6 +3,8 @@ package com.xiaoyi.mall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.xiaoyi.mall.coupon.to.SaveSkuFullReductionTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,7 +60,8 @@ public class SkuFullReductionController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("coupon:skufullreduction:save")
-    public R save(@RequestBody SkuFullReductionEntity skuFullReduction){
+    public R save(@RequestBody SaveSkuFullReductionTo saveTo){
+        SkuFullReductionEntity skuFullReduction = BeanUtil.copyProperties(saveTo, SkuFullReductionEntity.class);
 		skuFullReductionService.save(skuFullReduction);
 
         return R.ok();

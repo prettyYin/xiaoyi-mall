@@ -3,7 +3,9 @@ package com.xiaoyi.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.product.entity.SkuInfoEntity;
+import com.xiaoyi.mall.product.vo.Skus;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageInfo queryPage(Map<String, Object> params);
+
+    void saveSkuAllInfos(Long spuId, Long branId, Long catalogId, List<Skus> skuVos);
 }
 

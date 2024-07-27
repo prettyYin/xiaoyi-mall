@@ -1,7 +1,11 @@
 package com.xiaoyi.mall.product.service.impl;
 
+import com.xiaoyi.mall.product.vo.BaseAttrs;
+import com.xiaoyi.mall.product.vo.SpuSaveVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -17,7 +21,7 @@ import com.xiaoyi.mall.product.entity.ProductAttrValueEntity;
 import com.xiaoyi.mall.product.service.ProductAttrValueService;
 import org.springframework.transaction.annotation.Transactional;
 
-
+@Slf4j
 @Service("productAttrValueService")
 public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao, ProductAttrValueEntity> implements ProductAttrValueService {
 
@@ -48,12 +52,24 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         //1、删除这个spuId之前对应的所有属性
         this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
 
-
-        List<ProductAttrValueEntity> collect = entities.stream().map(item -> {
-            item.setSpuId(spuId);
-            return item;
-        }).collect(Collectors.toList());
+        List<ProductAttrValueEntity> collect = entities.stream().peek(item -> item.setSpuId(spuId)).collect(Collectors.toList());
         this.saveBatch(collect);
+    }
+
+    @Override
+    public void saveBaseAttrs(Long spuId, SpuSaveVo saveVo) {
+        List<BaseAttrs> baseAttrs = saveVo.getBaseAttrs();
+        List<ProductAttrValueEntity> saveProductAttrs = new ArrayList<>();
+        baseAttrs.forEach(attr -> {
+            ProductAttrValueEntity productAttrValue = new ProductAttrValueEntity()
+                    .setSpuId(spuId)
+                    .setAttrId(attr.getAttrId())
+                    .setAttrValue(attr.getAttrValues())
+                    .setQuickShow(attr.getShowDesc());
+            saveProductAttrs.add(productAttrValue);
+        });
+        boolean isSuccess = saveBatch(saveProductAttrs);
+        log.info("保存商品基本属性信息是否成功：{}", isSuccess);
     }
 
 }

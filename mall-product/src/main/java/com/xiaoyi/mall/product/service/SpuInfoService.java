@@ -3,6 +3,7 @@ package com.xiaoyi.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.product.entity.SpuInfoEntity;
+import com.xiaoyi.mall.product.vo.SpuSaveVo;
 
 import java.util.Map;
 
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
     PageInfo queryPage(Map<String, Object> params);
+
+    void saveDetail(SpuSaveVo saveVo);
 }
 

@@ -3,6 +3,7 @@ package com.xiaoyi.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.product.entity.ProductAttrValueEntity;
+import com.xiaoyi.mall.product.vo.SpuSaveVo;
 
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,7 @@ public interface ProductAttrValueService extends IService<ProductAttrValueEntity
     List<ProductAttrValueEntity> baseAttrlistforspu(Long spuId);
 
     void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> entities);
+
+    void saveBaseAttrs(Long spuId, SpuSaveVo saveVo);
 }
 

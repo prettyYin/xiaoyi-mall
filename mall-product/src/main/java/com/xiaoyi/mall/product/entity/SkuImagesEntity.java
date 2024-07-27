@@ -5,7 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * sku图片
@@ -14,6 +18,9 @@ import lombok.Data;
  * @email 2544212327@qq.com
  * @date 2023-12-11 22:30:29
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 @Data
 @TableName("pms_sku_images")
 public class SkuImagesEntity implements Serializable {

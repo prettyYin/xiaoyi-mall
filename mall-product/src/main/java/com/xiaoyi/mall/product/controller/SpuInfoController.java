@@ -3,6 +3,7 @@ package com.xiaoyi.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.xiaoyi.mall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,9 +55,8 @@ public class SpuInfoController {
      */
     @PostMapping("/save")
     //@RequiresPermissions("product:spuinfo:save")
-    public R save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
-
+    public R save(@RequestBody SpuSaveVo saveVo){
+		spuInfoService.saveDetail(saveVo);
         return R.ok();
     }
 
