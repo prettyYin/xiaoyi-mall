@@ -3,12 +3,9 @@ package com.xiaoyi.mall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.ware.entity.PurchaseEntity;
 import com.xiaoyi.mall.ware.service.PurchaseService;
@@ -25,15 +22,15 @@ import com.xiaoyi.mall.common.utils.R;
  * @date 2023-12-13 23:29:58
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("ware/purchase")
 public class PurchaseController {
-    @Autowired
-    private PurchaseService purchaseService;
+    private final PurchaseService purchaseService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
     //@RequiresPermissions("ware:purchase:list")
     public R list(@RequestParam Map<String, Object> params){
         PageInfo page = purchaseService.queryPage(params);
@@ -45,7 +42,7 @@ public class PurchaseController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
     //@RequiresPermissions("ware:purchase:info")
     public R info(@PathVariable("id") Long id){
 		PurchaseEntity purchase = purchaseService.getById(id);
@@ -56,7 +53,7 @@ public class PurchaseController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
     //@RequiresPermissions("ware:purchase:save")
     public R save(@RequestBody PurchaseEntity purchase){
 		purchaseService.save(purchase);
@@ -67,7 +64,7 @@ public class PurchaseController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     //@RequiresPermissions("ware:purchase:update")
     public R update(@RequestBody PurchaseEntity purchase){
 		purchaseService.updateById(purchase);
@@ -78,7 +75,7 @@ public class PurchaseController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
     //@RequiresPermissions("ware:purchase:delete")
     public R delete(@RequestBody Long[] ids){
 		purchaseService.removeByIds(Arrays.asList(ids));
@@ -86,4 +83,20 @@ public class PurchaseController {
         return R.ok();
     }
 
+    /**
+     * 未被合并的采购单列表
+     */
+    @GetMapping("/unreceive/list")
+    public R unreceiveList() {
+        PageInfo page = purchaseService.unreceiveList();
+        return R.ok().put("page", page);
+    }
+
+    /**
+     * 合并采购需求
+     */
+    @PostMapping("/merge")
+    public R merge() {
+        return R.ok();
+    }
 }

@@ -3,6 +3,7 @@ package com.xiaoyi.mall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,10 +26,10 @@ import com.xiaoyi.mall.common.utils.R;
  * @date 2023-12-13 23:29:57
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("ware/wareordertaskdetail")
 public class WareOrderTaskDetailController {
-    @Autowired
-    private WareOrderTaskDetailService wareOrderTaskDetailService;
+    private final WareOrderTaskDetailService wareOrderTaskDetailService;
 
     /**
      * 列表

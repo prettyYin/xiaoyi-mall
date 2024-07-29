@@ -1,5 +1,6 @@
 package com.xiaoyi.mall.ware.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -23,7 +24,7 @@ public class PurchaseEntity implements Serializable {
 	/**
 	 * 采购单id
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long id;
 	/**
 	 * 采购人id
@@ -42,7 +43,7 @@ public class PurchaseEntity implements Serializable {
 	 */
 	private Integer priority;
 	/**
-	 * 状态
+	 * 状态（0未分配，1已分配，2已领取）
 	 */
 	private Integer status;
 	/**

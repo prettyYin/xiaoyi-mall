@@ -26,4 +26,9 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
         return new PageInfo(page);
     }
 
+    @Override
+    public PageInfo unreceiveList() {
+        return null;
+    }
+
 }

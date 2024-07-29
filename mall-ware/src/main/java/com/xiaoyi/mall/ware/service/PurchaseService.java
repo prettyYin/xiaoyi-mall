@@ -16,5 +16,8 @@ import java.util.Map;
 public interface PurchaseService extends IService<PurchaseEntity> {
 
     PageInfo queryPage(Map<String, Object> params);
+
+    PageInfo unreceiveList();
+
 }
 
