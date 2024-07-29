@@ -14,6 +14,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoyi.mall.common.xss.SQLFilter;
 import org.apache.commons.lang.StringUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,6 +29,10 @@ public class Query<T> {
     }
 
     public IPage<T> getPage(Map<String, Object> params, String defaultOrderField, boolean isAsc) {
+        if (params == null || params.isEmpty()) {
+            params = new HashMap<>();
+        }
+
         //分页参数
         long curPage = 1;
         long limit = 10;
