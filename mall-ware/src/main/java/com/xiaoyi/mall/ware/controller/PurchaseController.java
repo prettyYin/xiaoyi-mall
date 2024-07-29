@@ -1,6 +1,7 @@
 package com.xiaoyi.mall.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.xiaoyi.mall.ware.vo.MergeVo;
@@ -98,6 +99,16 @@ public class PurchaseController {
     @PostMapping("/merge")
     public R merge(@RequestBody MergeVo mergeVo) {
         purchaseService.mergePurchaseDetail(mergeVo);
+        return R.ok();
+    }
+
+    /**
+     * 领取采购单
+     * @param ids 采购单ids
+     */
+    @PostMapping("/received")
+    public R received(@RequestBody List<Long> ids) {
+        purchaseService.receivedPurchaseDetail(ids);
         return R.ok();
     }
 }

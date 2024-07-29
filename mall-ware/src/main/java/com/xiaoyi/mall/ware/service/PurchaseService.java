@@ -5,6 +5,7 @@ import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.ware.entity.PurchaseEntity;
 import com.xiaoyi.mall.ware.vo.MergeVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,5 +22,7 @@ public interface PurchaseService extends IService<PurchaseEntity> {
     PageInfo queryPageUnreceiveList();
 
     void mergePurchaseDetail(MergeVo mergeVo);
+
+    void receivedPurchaseDetail(List<Long> ids);
 }
 

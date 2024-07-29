@@ -86,4 +86,25 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
         purchaseDetailService.updateBatchById(purchaseDetails, purchaseDetails.size());
     }
 
+    @Transactional
+    @Override
+    public void receivedPurchaseDetail(List<Long> ids) {
+        if (ids.isEmpty()) {
+            return;
+        }
+        // 过滤状态为新建/已分配状态的订单，并将其状态设置为已领取
+        List<PurchaseEntity> purchases = listByIds(ids);
+        purchases = purchases.stream()
+                .filter(purchase -> purchase.getStatus().equals(WareConstant.PurchaseEnum.CREATED.getStatus())
+                        || purchase.getStatus().equals(WareConstant.PurchaseEnum.ASSIGNED.getStatus()))
+                .peek(purchase -> purchase.setStatus(WareConstant.PurchaseEnum.RECEIVE.getStatus()))
+                .collect(Collectors.toList());
+        if (purchases.size() > 0) {
+            updateBatchById(purchases, purchases.size());
+        }
+        // 改变采购项的状态
+        List<Long> purchaseIds = purchases.stream().map(PurchaseEntity::getId).collect(Collectors.toList());
+        purchaseDetailService.updateReceivingByPurchaseIds(purchaseIds);
+    }
+
 }

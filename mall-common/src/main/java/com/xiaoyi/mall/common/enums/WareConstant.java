@@ -4,7 +4,10 @@ public class WareConstant {
 
     public enum PurchaseEnum {
         CREATED(0, "新建"),
-        ASSIGNED(1, "已分配")
+        ASSIGNED(1, "已分配"),
+        RECEIVE(2, "已领取"),
+        FINISH(3, "已完成"),
+        HASERROR(4, "有异常");
         ;
 
         private final int status;
@@ -27,9 +30,9 @@ public class WareConstant {
     public enum PurchaseDetailEnum {
         CREATED(0, "新建"),
         ASSIGNED(1, "已分配"),
-        RECEIVE(2, "已领取"),
+        RECEIVING(2, "正在采购"),
         FINISH(3, "已完成"),
-        HASERROR(4, "有异常");
+        HASERROR(4, "采购失败");
 
         private final int status;
         private final String statusName;
