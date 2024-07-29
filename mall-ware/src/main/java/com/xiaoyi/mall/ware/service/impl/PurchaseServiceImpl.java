@@ -1,7 +1,7 @@
 package com.xiaoyi.mall.ware.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.xiaoyi.mall.common.enums.WareConstant;
+import com.xiaoyi.mall.common.constant.WareConstant;
 import com.xiaoyi.mall.ware.entity.PurchaseDetailEntity;
 import com.xiaoyi.mall.ware.exception.entity.CustomException;
 import com.xiaoyi.mall.ware.service.PurchaseDetailService;

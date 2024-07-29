@@ -1,7 +1,7 @@
 package com.xiaoyi.mall.ware.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.xiaoyi.mall.common.enums.WareConstant;
+import com.xiaoyi.mall.common.constant.WareConstant;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -60,7 +60,7 @@ public class PurchaseDetailServiceImpl extends ServiceImpl<PurchaseDetailDao, Pu
             return;
         }
         List<PurchaseDetailEntity> purchaseDetails = lambdaQuery().in(PurchaseDetailEntity::getPurchaseId, purchaseIds).list();
-        purchaseDetails.forEach(purchaseDetail -> purchaseDetail.setStatus(WareConstant.PurchaseDetailEnum.RECEIVING.getStatus()));
+        purchaseDetails.forEach(purchaseDetail -> purchaseDetail.setStatus(WareConstant.PurchaseDetailEnum.BUYING.getStatus()));
         updateBatchById(purchaseDetails);
     }
 
