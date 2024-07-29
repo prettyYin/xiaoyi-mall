@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 
@@ -16,6 +17,7 @@ import lombok.Data;
  * @email 2544212327@qq.com
  * @date 2023-12-13 23:29:57
  */
+@Accessors(chain = true)
 @Data
 @TableName("wms_purchase_detail")
 public class PurchaseDetailEntity implements Serializable {

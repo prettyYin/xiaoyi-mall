@@ -1,13 +1,12 @@
 package com.xiaoyi.mall.ware.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 采购信息
@@ -16,6 +15,7 @@ import lombok.Data;
  * @email 2544212327@qq.com
  * @date 2023-12-13 23:29:58
  */
+@Accessors(chain = true)
 @Data
 @TableName("wms_purchase")
 public class PurchaseEntity implements Serializable {
@@ -57,10 +57,12 @@ public class PurchaseEntity implements Serializable {
 	/**
 	 * 创建日期
 	 */
+	@TableField(fill = FieldFill.INSERT)
 	private Date createTime;
 	/**
 	 * 更新日期
 	 */
+	@TableField(fill = FieldFill.UPDATE)
 	private Date updateTime;
 
 }

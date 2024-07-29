@@ -3,8 +3,8 @@ package com.xiaoyi.mall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.xiaoyi.mall.ware.vo.MergeVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.xiaoyi.mall.ware.entity.PurchaseEntity;
@@ -88,7 +88,7 @@ public class PurchaseController {
      */
     @GetMapping("/unreceive/list")
     public R unreceiveList() {
-        PageInfo page = purchaseService.unreceiveList();
+        PageInfo page = purchaseService.queryPageUnreceiveList();
         return R.ok().put("page", page);
     }
 
@@ -96,7 +96,8 @@ public class PurchaseController {
      * 合并采购需求
      */
     @PostMapping("/merge")
-    public R merge() {
+    public R merge(@RequestBody MergeVo mergeVo) {
+        purchaseService.mergePurchaseDetail(mergeVo);
         return R.ok();
     }
 }

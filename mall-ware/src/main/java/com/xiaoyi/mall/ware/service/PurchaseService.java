@@ -3,6 +3,7 @@ package com.xiaoyi.mall.ware.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoyi.mall.common.utils.PageInfo;
 import com.xiaoyi.mall.ware.entity.PurchaseEntity;
+import com.xiaoyi.mall.ware.vo.MergeVo;
 
 import java.util.Map;
 
@@ -17,7 +18,8 @@ public interface PurchaseService extends IService<PurchaseEntity> {
 
     PageInfo queryPage(Map<String, Object> params);
 
-    PageInfo unreceiveList();
+    PageInfo queryPageUnreceiveList();
 
+    void mergePurchaseDetail(MergeVo mergeVo);
 }
 

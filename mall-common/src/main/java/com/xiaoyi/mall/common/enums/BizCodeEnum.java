@@ -16,7 +16,6 @@ package com.xiaoyi.mall.common.enums;
  *
  */
 public enum BizCodeEnum {
-    SQL_SYNTAX_EXCEPTION(500, "SQL语法错误"),
     UNAUTHORIZED_EXCEPTION(401, "未授权"),
     FORBIDDEN_EXCEPTION(403, "禁止访问"),
     NOT_FOUND_EXCEPTION(404, "未找到资源"),
@@ -26,6 +25,8 @@ public enum BizCodeEnum {
     GONE_EXCEPTION(410, "请求资源已过期"),
     UNSUPPORTED_MEDIA_TYPE_EXCEPTION(415, "不支持的媒体类型"),
     TOO_MANY_REQUESTS_EXCEPTION(429, "请求过多"),
+    SQL_SYNTAX_EXCEPTION(500, "SQL语法错误"),
+    SYSTEM_EXCEPTION(500, "系统错误"),
     HTTP_SERVER_EXCEPTION(503, "HTTP请求错误"),
 
     UNKNOW_EXCEPTION(10000,"系统未知异常"),
